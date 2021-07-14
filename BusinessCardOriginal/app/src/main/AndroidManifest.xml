@@ -3,14 +3,15 @@
     package="com.gusoliveira21.businesscard">
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BusinessCard">
-        <activity android:name=".ActivityAddCard"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".AddBusinessCardActivity"></activity>
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
