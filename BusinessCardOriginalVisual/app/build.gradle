@@ -31,12 +31,16 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+
     buildFeatures{
         dataBinding true
     }
     buildFeatures{
         viewBinding true
     }
+
+
 }
 
 dependencies {
@@ -67,4 +71,12 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+
+    //MaterialIntro
+    implementation "com.github.AppIntro:AppIntro:$material_intro"
+
+    //Airbnb animation
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
+
 }
