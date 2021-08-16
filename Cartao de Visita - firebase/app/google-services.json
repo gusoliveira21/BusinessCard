@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "420501678337",
+    "project_id": "business-card-b9614",
+    "storage_bucket": "business-card-b9614.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:420501678337:android:5805f22da260a48e081300",
+        "android_client_info": {
+          "package_name": "com.gusoliveira21.businesscard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "420501678337-hcu27u4j6rdh15poftbq3ufsglus9rgk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gusoliveira21.businesscard",
+            "certificate_hash": "6fffb55c9bb971d080c31a432e320f4c137c4dc2"
+          }
+        },
+        {
+          "client_id": "420501678337-kr89gmtvjq67ep2km98e66p10jijgvqf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu1V0MLs0fKS1mvi74ZmOQbwLFlM8VUVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "420501678337-kr89gmtvjq67ep2km98e66p10jijgvqf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

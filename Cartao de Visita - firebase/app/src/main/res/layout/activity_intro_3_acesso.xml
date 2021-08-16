@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayoutCompat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_background_slid_tree"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/view_titulo"
+            style="@style/style_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="96dp"
+            android:layout_marginTop="112dp"
+            android:layout_marginEnd="96dp"
+            android:fontFamily="@font/allerta_stencil"
+            android:text="@string/ja_possue_cadastro"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            style="@style/style_lottieAnimation"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="50dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_titulo"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/user_float" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_login"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/allerta_stencil"
+            android:onClick="btLogin"
+            android:text="@string/text_button_login_another_way"
+            android:visibility="visible"
+            app:backgroundTint="#9A7E57C2"
+            app:cornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/animationView" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_cadastrar"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+
+            android:fontFamily="@font/allerta_stencil"
+            android:onClick="btCadastrar"
+            android:text="@string/text_button_create_acount"
+            android:visibility="visible"
+            app:backgroundTint="#9A7E57C2"
+            app:cornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_login" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_anonymo"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/allerta_stencil"
+
+            android:onClick="btUseAnonimamente"
+            android:text="@string/text_button_login_anonimo"
+            android:visibility="visible"
+            app:backgroundTint="#9A7E57C2"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/icon_anonimo"
+            app:iconGravity="textStart"
+            app:iconPadding="5dp"
+            app:iconSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_cadastrar" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="210dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="16dp"
+            android:layout_marginTop="8dp"
+            android:hapticFeedbackEnabled="true"
+            app:cardBackgroundColor="#9A7E57C2"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_anonymo">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#7E57C2"
+                    android:gravity="center"
+                    android:text="@string/titulo_opcoes_de_login"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/buttonLoginGoogle"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="signInWithGoogle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/icon_login_google" />
+
+                <ImageView
+                    android:id="@+id/buttonLoginFacebook"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="signInWithFacebook"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:srcCompat="@drawable/icon_login_facebook" />
+
+                <ImageView
+                    android:id="@+id/buttonLoginGithub"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:onClick="signInWithGithub"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/buttonLoginFacebook"
+                    app:layout_constraintStart_toEndOf="@+id/buttonLoginGoogle"
+                    app:srcCompat="@drawable/icon_login_github" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

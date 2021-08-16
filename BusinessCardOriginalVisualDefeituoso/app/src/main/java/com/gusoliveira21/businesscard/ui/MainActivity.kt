@@ -11,7 +11,7 @@ import com.github.appintro.AppIntroPageTransformerType
 import com.gusoliveira21.businesscard.R
 import com.gusoliveira21.businesscard.databinding.ActivityMainBinding
 
-class MainActivity(private val slidesactivity: SlidesActivity) : AppIntro() /*AppCompatActivity()*/ {
+class MainActivity() : AppIntro() /*AppCompatActivity()*/ {
     //private lateinit var binding = ActivityMainBinding
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
@@ -20,8 +20,7 @@ class MainActivity(private val slidesactivity: SlidesActivity) : AppIntro() /*Ap
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //slidesactivity.configuracoesTela()
-        //slidesactivity.slidesIntroducao()
+
 
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,

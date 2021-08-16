@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.CadastroActivity"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_new_card"
+            android:layout_width="98dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/cadastro"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/bt_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="16dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/boxInputEmail"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/layer_email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_new_card">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campo_email_login"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/boxInputSenha"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/layer_senha"
+            app:layout_constraintEnd_toStartOf="@+id/olhoAberto"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/boxInputEmail">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campo_senha_um"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <ImageButton
+            android:id="@+id/olhoAberto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:background="#FFFFFF"
+            android:padding="16dp"
+            android:src="@drawable/ic_olho_aberto"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/boxInputSenha"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/boxInputSenha" />
+
+        <ImageButton
+            android:id="@+id/olhoFechado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:background="#FFFFFF"
+            android:padding="16dp"
+            android:src="@drawable/ic_olho_fechado"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/boxInputSenha"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/boxInputSenha" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/boxInputSenhaConfirmacao"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/layer_repita_sua_senha"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/boxInputSenha">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campo_senha_dois"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_cadastrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/botao_cadastrar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/boxInputSenhaConfirmacao" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
