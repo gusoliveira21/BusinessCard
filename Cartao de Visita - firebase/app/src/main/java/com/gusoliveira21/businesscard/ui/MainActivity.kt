@@ -14,6 +14,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.gusoliveira21.businesscard.PrincipalActivity
 import com.gusoliveira21.businesscard.R
@@ -21,7 +22,7 @@ import com.gusoliveira21.businesscard.databinding.ActivityIntro3AcessoBinding
 import com.gusoliveira21.businesscard.util.util
 
 class MainActivity() : AppIntro() {
-    private  val binding by lazy { ActivityIntro3AcessoBinding.inflate(layoutInflater) }
+    //private  val binding by lazy { ActivityIntro3AcessoBinding.inflate(layoutInflater) }
     private lateinit var auth: FirebaseAuth
 
     //TODO: Na documentação não havia nada falando que precisava criar esta variável.
@@ -30,33 +31,32 @@ class MainActivity() : AppIntro() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
 
-        auth = FirebaseAuth.getInstance()
-        configuracaoGoogleSignIn()
         configuracoesSlide()
         slideIntroducao()
 
+        auth = FirebaseAuth.getInstance()
+        configuracaoGoogleSignIn()
+
 
     }
+    //TODO: ERRO AO EFETUAR LOGIN COM O GOOGLE
 
     public override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
-        if (currentUser != null)
-            startActivity(Intent(this, PrincipalActivity::class.java))
+        updateUI(currentUser)
     }
 
     //Todo: Preciso colocar a verificação de internet no código
-
     //-------------------------------- Configurações do Slide --------------------------------
-    fun configuracoesSlide() {
+    fun configuracoesSlide(){
         setImmersiveMode()
         isSkipButtonEnabled = false
         isButtonsEnabled = false
         setTransformer(AppIntroPageTransformerType.Fade)
     }
-    fun slideIntroducao() {
+    fun slideIntroducao(){
         addSlide(AppIntroCustomLayoutFragment.newInstance(R.layout.activity_intro_1_hello))
         addSlide(AppIntroCustomLayoutFragment.newInstance(R.layout.activity_intro_2_description))
         addSlide(AppIntroCustomLayoutFragment.newInstance(R.layout.activity_intro_3_acesso))
@@ -73,18 +73,20 @@ class MainActivity() : AppIntro() {
     }
 
 
-    //TODO: ERRO AO EFETUAR LOGIN COM O GOOGLE
 
 
+
+    private fun updateUI(user: FirebaseUser?) {
+        if (user != null) {
+            startActivity(Intent(this, PrincipalActivity::class.java))
+            finish()
+        }
+    }
 
 
 
     // -------------------------------- login com o google --------------------------------
-    //TODO: Acessar
-    fun signInWithGoogle(view: View) {
-        val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, 555)
-    }
+
     //TODO: Configuração do google sigin
     private fun configuracaoGoogleSignIn() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -93,6 +95,13 @@ class MainActivity() : AppIntro() {
             .build()
         googleSignInClient = GoogleSignIn.getClient(this, gso)
     }
+
+    //TODO: Acessar
+    fun signInWithGoogle(view: View) {
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(signInIntent, 555)
+    }
+
     //TODO: Recebe o resultado da operação
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -100,14 +109,15 @@ class MainActivity() : AppIntro() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 Log.d(ContentValues.TAG, "onActivityResultGoogle: sucesso")
-                startActivity(Intent(this, PrincipalActivity::class.java))
                 val account = task.getResult(ApiException::class.java)!!
                 firebaseAuthWithGoogle(account.idToken!!)
+
             } catch (e: ApiException) {
                 Log.d(ContentValues.TAG, "onActivityResultGoogle: falha  -> ${task.exception}")
             }
         }
     }
+
     //TODO: Faz a autenticação
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
@@ -115,7 +125,10 @@ class MainActivity() : AppIntro() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d(ContentValues.TAG, "firebaseAuthWithGoogle: Sucesso ")
+                    val user = auth.currentUser
+                    updateUI(user)
                 } else {
+                    updateUI(null)
                     Log.d(ContentValues.TAG, "firebaseAuthWithGoogle: Falha -> ${task.exception}")
                 }
             }

@@ -32,17 +32,13 @@ class PrincipalActivity : AppIntro() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        recuperaMovimentacoes()
+
         setupRecyclertView(this)
+        recuperaMovimentacoes()
+
         auth = Firebase.auth
         listener()
     }
-
-
-/*    override fun onStart() {
-        super.onStart()
-        //recuperaMovimentacoes()
-    }*/
 
     fun listener() {
         binding.btAddCard.setOnClickListener {
@@ -58,13 +54,11 @@ class PrincipalActivity : AppIntro() {
     }
 
     private fun setupRecyclertView(context: Context) {
-        //recuperaMovimentacoes()
         binding.rvCards.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = CardAdapter(ListaMovimentacao, this)
         }
     }
-
 
     private fun recuperaMovimentacoes() {
         var idUsuario =
