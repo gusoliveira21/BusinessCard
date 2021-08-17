@@ -1,26 +1,31 @@
 package com.gusoliveira21.businesscard.ui
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
-import com.google.firebase.ktx.Firebase
 import com.gusoliveira21.businesscard.R
 import com.gusoliveira21.businesscard.databinding.ItemBusinessCardBinding
 import com.gusoliveira21.businesscard.model.Movimentacao
 import java.util.*
 
-class CardAdapter(var movimentacoes: ArrayList<Movimentacao>, principalActivity: RecyclerView) : RecyclerView.Adapter<CardViewHolder>(){
-    private lateinit var auth: FirebaseAuth
+class CardAdapter() : RecyclerView.Adapter<CardViewHolder>(){
+
+    var movimentacoes = ArrayList<Movimentacao>()
+
+    constructor(arrayMovimentacoes: ArrayList<Movimentacao>, principalActivity: RecyclerView):this(){
+        this.movimentacoes = arrayMovimentacoes
+    }
+
+
+
+
+
     private lateinit var database: DatabaseReference
-    //private var movimentacoes =  movimentacao
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -49,6 +54,8 @@ class CardAdapter(var movimentacoes: ArrayList<Movimentacao>, principalActivity:
 
 
 }
+
+
 
 
 class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
