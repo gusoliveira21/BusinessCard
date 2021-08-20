@@ -7,6 +7,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.IgnoreExtraProperties
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.gusoliveira21.businesscard.util.util
 import java.util.*
 
 @IgnoreExtraProperties
@@ -22,12 +23,10 @@ data class Movimentacao(
 
 
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun salvar() {
         database = Firebase.database.reference
-        var idUsuario = Base64.getEncoder().encodeToString(Firebase.auth.currentUser!!.email!!.toByteArray())
         database.child("movimentacao")
-            .child(idUsuario)
+            .child(util().idUsuario())
             .push()
             .setValue(this)
     }

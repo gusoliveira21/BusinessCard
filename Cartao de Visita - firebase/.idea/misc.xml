@@ -3,12 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/drawable-v24/ic_background_slid_tree.xml" value="0.3828125" />
         <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/drawable/ic_back.xml" value="0.30364583333333334" />
         <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/drawable/ic_olho_aberto.xml" value="0.3828125" />
         <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/drawable/ic_olho_fechado.xml" value="0.3828125" />
         <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_adicionar_card.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_auxiliar_metodos_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_cadastrar.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_color.xml" value="0.22" />
         <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_intro_1_hello.xml" value="0.22291666666666668" />
         <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_intro_2_description.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_intro_3_acesso.xml" value="0.36666666666666664" />

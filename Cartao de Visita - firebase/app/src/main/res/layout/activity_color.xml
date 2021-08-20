@@ -1,99 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.AdicionarCardActivity">
-
-    <!--Titulo-->
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_new_card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:gravity="center"
-        android:text="@string/label_description_business_cards"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!--Campo nome-->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_nome"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="@string/layer_nome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_new_card">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/campoNome"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="text" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-    <!--Campo Telefone-->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_telefone"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="@string/layer_telefone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_nome">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/campoTelefone"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="phone" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <!--Campo Email-->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_email"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="@string/layer_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_telefone">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/campoEmail"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="textEmailAddress" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <!--Campo Empresa-->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_Empresa"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="@string/layer_empresa"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_email">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/campoEmpresa"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
-
+    android:layout_height="wrap_content"
+    android:hapticFeedbackEnabled="true"
+    tools:context=".ui.ActivityColor">
 
     <RadioGroup
         android:id="@+id/radio_group_one"
@@ -104,7 +17,8 @@
         android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_Empresa">
+        app:layout_constraintTop_toTopOf="parent">
+
 
         <RadioButton
             android:id="@+id/radioButton2"
@@ -155,6 +69,7 @@
             android:onClick="radioGroupOne"/>
 
     </RadioGroup>
+
 
     <RadioGroup
         android:id="@+id/radio_group_two"
@@ -215,6 +130,7 @@
             android:onClick="radioGroupTwo"/>
     </RadioGroup>
 
+
     <RadioGroup
         android:id="@+id/radio_group_three"
         android:layout_width="wrap_content"
@@ -269,38 +185,30 @@
     </RadioGroup>
 
 
-
-
-
-
-
-
-
-
-
-
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/bt_confirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="@string/conclusion"
-        android:backgroundTint="@color/Color_Deep_Purple"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+    <Button
         android:id="@+id/bt_Cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="@string/cancel"
         android:backgroundTint="@color/Color_Deep_Purple"
+        android:text="@string/cancel"
+        android:onClick="cancel"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintCircleRadius="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group_three" />
+
+    <Button
+        android:id="@+id/bt_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/Color_Deep_Purple"
+        android:text="@string/confirm"
+        android:onClick="confirm"
+        android:textColor="@color/white"
+        app:layout_constraintCircleRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group_three" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

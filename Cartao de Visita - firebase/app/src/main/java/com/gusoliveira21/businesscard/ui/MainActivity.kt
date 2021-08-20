@@ -38,9 +38,7 @@ class MainActivity() : AppIntro() {
         auth = FirebaseAuth.getInstance()
         configuracaoGoogleSignIn()
 
-
     }
-    //TODO: ERRO AO EFETUAR LOGIN COM O GOOGLE
 
     public override fun onStart() {
         super.onStart()
@@ -50,13 +48,14 @@ class MainActivity() : AppIntro() {
 
     //Todo: Preciso colocar a verificação de internet no código
     //-------------------------------- Configurações do Slide --------------------------------
-    fun configuracoesSlide(){
+    fun configuracoesSlide() {
         setImmersiveMode()
         isSkipButtonEnabled = false
         isButtonsEnabled = false
         setTransformer(AppIntroPageTransformerType.Fade)
     }
-    fun slideIntroducao(){
+
+    fun slideIntroducao() {
         addSlide(AppIntroCustomLayoutFragment.newInstance(R.layout.activity_intro_1_hello))
         addSlide(AppIntroCustomLayoutFragment.newInstance(R.layout.activity_intro_2_description))
         addSlide(AppIntroCustomLayoutFragment.newInstance(R.layout.activity_intro_3_acesso))
@@ -73,9 +72,6 @@ class MainActivity() : AppIntro() {
     }
 
 
-
-
-
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
             startActivity(Intent(this, PrincipalActivity::class.java))
@@ -84,11 +80,11 @@ class MainActivity() : AppIntro() {
     }
 
 
-
     // -------------------------------- login com o google --------------------------------
 
     //TODO: Configuração do google sigin
     private fun configuracaoGoogleSignIn() {
+        Log.e("TAG", "-> Configuração do google sigin")
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -98,6 +94,8 @@ class MainActivity() : AppIntro() {
 
     //TODO: Acessar
     fun signInWithGoogle(view: View) {
+        Log.e(ContentValues.TAG, "-> Acessar google!")
+        Toast.makeText(this, "-> Acessar google!", Toast.LENGTH_LONG).show()
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, 555)
     }
@@ -108,12 +106,12 @@ class MainActivity() : AppIntro() {
         if (requestCode == 555) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
-                Log.d(ContentValues.TAG, "onActivityResultGoogle: sucesso")
+                Log.e(ContentValues.TAG, "-> onActivityResultGoogle: sucesso")
                 val account = task.getResult(ApiException::class.java)!!
                 firebaseAuthWithGoogle(account.idToken!!)
 
             } catch (e: ApiException) {
-                Log.d(ContentValues.TAG, "onActivityResultGoogle: falha  -> ${task.exception}")
+                Log.e(ContentValues.TAG, "-> onActivityResultGoogle: falha  -> ${task.exception}")
             }
         }
     }
@@ -124,12 +122,12 @@ class MainActivity() : AppIntro() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Log.d(ContentValues.TAG, "firebaseAuthWithGoogle: Sucesso ")
+                    Log.e(ContentValues.TAG, "-> firebaseAuthWithGoogle: Sucesso ")
                     val user = auth.currentUser
                     updateUI(user)
                 } else {
                     updateUI(null)
-                    Log.d(ContentValues.TAG, "firebaseAuthWithGoogle: Falha -> ${task.exception}")
+                    Log.e(ContentValues.TAG, "-> firebaseAuthWithGoogle: Falha -> ${task.exception}")
                 }
             }
     }
@@ -141,7 +139,6 @@ class MainActivity() : AppIntro() {
             startActivity(Intent(this, LoginActivity::class.java))
             Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show()
         } else Toast.makeText(this, "Sem conexão com a internet!", Toast.LENGTH_LONG).show()
-
     }
     fun btCadastrar(view: View) {
         if (util().statusInternet(this)) {
@@ -152,8 +149,7 @@ class MainActivity() : AppIntro() {
 
     }
 
-
-    //-------------------------------- Login anonimo --------------------------------
+    //-------------------------------- Login anônimo --------------------------------
     fun btUseAnonimamente(view: View) {
         if (util().statusInternet(this)) {
             auth.signInAnonymously()

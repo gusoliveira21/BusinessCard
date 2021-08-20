@@ -11,6 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="16dp"
+            app:cardBackgroundColor="@color/primaryColor"
             android:checkable="true"
             android:clickable="true"
             android:elevation="18dp"
@@ -33,6 +34,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:textStyle="bold"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -43,28 +45,37 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_nome"
-                    tools:text="Telefone" />
+                    tools:text="123456789" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_telefone"
-                    tools:text="Email" />
+                    tools:text="corporativo@email.com" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_empresa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:textColor="@color/white"
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    tools:text="Nome da Empresa" />
+                    tools:text="Soluções Empresariais" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>

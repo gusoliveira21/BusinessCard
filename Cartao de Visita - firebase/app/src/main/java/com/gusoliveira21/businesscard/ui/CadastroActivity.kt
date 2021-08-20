@@ -9,12 +9,11 @@ import android.view.View
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.gusoliveira21.businesscard.PrincipalActivity
-import com.gusoliveira21.businesscard.R
 import com.gusoliveira21.businesscard.databinding.ActivityCadastrarBinding
-import com.gusoliveira21.businesscard.util.util
 
 class CadastroActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -32,13 +31,17 @@ class CadastroActivity : AppCompatActivity() {
 
     }
 
-    /*public override fun onStart() {
+    public override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
-        if (currentUser != null)
+        updateUI(currentUser)
+    }
+    private fun updateUI(user: FirebaseUser?) {
+        if (user != null) {
             startActivity(Intent(this, PrincipalActivity::class.java))
-    }*/
-
+            finish()
+        }
+    }
 
     private fun listeners() {
         binding.apply {
@@ -48,16 +51,16 @@ class CadastroActivity : AppCompatActivity() {
                 binding.apply {
                     olhoAberto.visibility = View.INVISIBLE
                     olhoFechado.visibility = View.VISIBLE
-                    campoSenhaUm.inputType = 144
-                    campoSenhaDois.inputType = 144
+                    campoSenha.inputType = 144
+                    campoConfirmaSenha.inputType = 144
                 }
             }
             olhoFechado.setOnClickListener {
                 binding.apply {
                     olhoFechado.visibility = View.GONE
                     olhoAberto.visibility = View.VISIBLE
-                    campoSenhaUm.inputType = 129
-                    campoSenhaDois.inputType = 129
+                    campoSenha.inputType = 129
+                    campoConfirmaSenha.inputType = 129
                 }
             }
         }
@@ -68,8 +71,8 @@ class CadastroActivity : AppCompatActivity() {
     private fun signInWithEmailAndPassword() {
         if (verificaSenhas() && verificaSeEmailEEmpty()) {
             auth.createUserWithEmailAndPassword(
-                binding.campoEmailLogin.text.toString(),
-                binding.campoSenhaUm.text.toString())
+                binding.campoEmail.text.toString(),
+                binding.campoSenha.text.toString())
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Log.e("TAG", "VERIFICAÇÃO: $auth.currentUser")
@@ -81,9 +84,7 @@ class CadastroActivity : AppCompatActivity() {
                     } else {
                         Log.i(ContentValues.TAG, "mensagem: ${task.exception}")
 
-                        //Todo: Preciso colocar a funçao opcoesErro na classe Util
-                        util().opcoesErro(task.exception.toString())
-                        //opcoesErro(task.exception.toString())
+                        opcoesErro(task.exception.toString())
 
                     }
                 }
@@ -93,40 +94,41 @@ class CadastroActivity : AppCompatActivity() {
 
     // -------------------------------- Util --------------------------------
     private fun verificaSenhas(): Boolean {
-        if ((binding.campoSenhaUm.text.toString().isEmpty() or
-                    binding.campoSenhaDois.text.toString().isEmpty()) == false
+        if ((binding.campoSenha.text.toString().isEmpty() or
+                    binding.campoConfirmaSenha.text.toString().isEmpty()) == false
         )
-            if (binding.campoSenhaUm.text.toString().equals(binding.campoSenhaDois.text.toString()))
+            if (binding.campoSenha.text.toString().equals(binding.campoConfirmaSenha.text.toString()))
                 return true
         setMessageOfErrorPassword("Senhas não conferem!")
         return false
     }
-
+//TODO: Colocar na Util
     private fun opcoesErro(errorValue: String) {
         when {
             errorValue.contains("email address is already in use") ->
-                binding.campoEmailLogin.setError("O endereço de email já está sendo usado em outra conta!")
+                binding.campoEmail.setError("O endereço de email já está sendo usado em outra conta!")
             errorValue.contains("password is invalid") ->
                 setMessageOfErrorPassword("Digite uma senha mais forte! \n A cima de 6 dígitos!")
             else -> Toast.makeText(this, "Houve um erro ao cadastrar usuário!", Toast.LENGTH_SHORT)
                 .show()
         }
     }
-
+//TODO: Colocar na Util
     private fun verificaSeEmailEEmpty(): Boolean {
-        if (binding.campoEmailLogin.text!!.isEmpty() == false)
+        if (binding.campoEmail.text!!.isEmpty() == false)
             return true
         setMessageOfErrorEmail()
         return false
     }
 
+    //TODO: Colocar na Util
     private fun setMessageOfErrorEmail() {
-        binding.campoEmailLogin.setError("Digite um email!")
+        binding.campoEmail.setError("Digite um email!")
     }
-
+//TODO: Colocar na Util
     private fun setMessageOfErrorPassword(mensagem: String) {
-        binding.campoSenhaUm.setError(mensagem)
-        binding.campoSenhaDois.setError(mensagem)
+        binding.campoSenha.setError(mensagem)
+        binding.campoConfirmaSenha.setError(mensagem)
     }
 
 

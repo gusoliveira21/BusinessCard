@@ -1,45 +1,45 @@
 package com.gusoliveira21.businesscard.ui
 
+import android.content.ClipData
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import com.gusoliveira21.businesscard.databinding.ActivityAdicionarCardBinding
-import com.gusoliveira21.businesscard.model.Movimentacao
+import com.gusoliveira21.businesscard.databinding.ActivityColorBinding
+import com.gusoliveira21.businesscard.databinding.ItemBusinessCardBinding
 
-class AdicionarCardActivity : AppCompatActivity() {
-    private val binding by lazy { ActivityAdicionarCardBinding.inflate(layoutInflater) }
-    val movimentacoes = Movimentacao("", "", "", "", "")
+
+class ActivityColor : AppCompatActivity() {
+    private val binding by lazy { ActivityColorBinding.inflate(layoutInflater) }
+    private val bindingCard by lazy { ActivityAdicionarCardBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        listeners()
+        setTitle("Escolha uma cor para o cartão:")
+
     }
 
-    fun listeners() {
-        binding.btCancel.setOnClickListener { finish() }
-        binding.btConfirm.setOnClickListener { concluir() }
-    }
+    fun confirm(view:View){
+         if (checkIfHasColorSelected()) {
 
-    fun concluir() {
-        if ((hasFieldEmpty()== false) && (colorFieldIsEmpty() == false)) {
-            Toast.makeText(this, "Dentro", Toast.LENGTH_LONG).show()
-            movimentacoes.nome = binding.campoNome.text.toString()
-            movimentacoes.telefone = binding.campoTelefone.text.toString()
-            movimentacoes.email = binding.campoEmail.text.toString()
-            movimentacoes.empresa = binding.campoEmpresa.text.toString()
-            movimentacoes.cor = selectColorRadioButton()
-            movimentacoes.salvar()
             finish()
-        } else Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_LONG).show()
+
+        } else
+            Log.e("TAG", "Não tem cor!")
     }
 
 
     fun selectColorRadioButton(): String {
         when{
-            binding.radioButton2.isChecked -> return "#000000"
             binding.radioButton3.isChecked -> return "#EF5350"
             binding.radioButton4.isChecked -> return "#EC407A"
             binding.radioButton5.isChecked -> return "#AB47BC"
@@ -59,24 +59,20 @@ class AdicionarCardActivity : AppCompatActivity() {
             binding.radioButton19.isChecked -> return "#8D6E63"
             binding.radioButton20.isChecked -> return "#BDBDBD"
             binding.radioButton21.isChecked -> return "#78909C"
+            binding.radioButton2.isChecked -> return "#000000"
         }
         return "erro"
     }
 
-    private fun hasFieldEmpty(): Boolean {
-        return (binding.campoNome.text.toString().isEmpty() ||
-                binding.campoEmpresa.text.toString().isEmpty() ||
-                binding.campoEmail.text.toString().isEmpty() ||
-                binding.campoTelefone.text.toString().isEmpty()
-                //binding.campoCor.text.toString().isEmpty()
-                )
-    }
-    private fun colorFieldIsEmpty(): Boolean {
-        return ((binding.radioGroupOne.checkedRadioButtonId == -1 &&
+    private fun checkIfHasColorSelected(): Boolean {
+        return (!(binding.radioGroupOne.checkedRadioButtonId == -1 &&
                 binding.radioGroupTwo.checkedRadioButtonId == -1 &&
                 binding.radioGroupThree.checkedRadioButtonId == -1))
     }
 
+    fun cancel(view:View){
+        finish()
+    }
 
     fun radioGroupOne(view: View) {
         if (binding.radioGroupTwo.checkedRadioButtonId != -1)
@@ -84,12 +80,14 @@ class AdicionarCardActivity : AppCompatActivity() {
         if (binding.radioGroupThree.checkedRadioButtonId != -1)
             binding.radioGroupThree.clearCheck()
     }
+
     fun radioGroupTwo(view: View) {
         if (binding.radioGroupOne.checkedRadioButtonId != -1)
             binding.radioGroupOne.clearCheck()
         if (binding.radioGroupThree.checkedRadioButtonId != -1)
             binding.radioGroupThree.clearCheck()
     }
+
     fun radioGroupThree(view: View) {
         if (binding.radioGroupOne.checkedRadioButtonId != -1)
             binding.radioGroupOne.clearCheck()
@@ -98,3 +96,4 @@ class AdicionarCardActivity : AppCompatActivity() {
     }
 
 }
+

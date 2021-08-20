@@ -28,8 +28,7 @@ class BusinessCardAdapter :
 
 
     inner class ViewHolder(
-        private val binding: ItemBusinessCardBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
+        private val binding: ItemBusinessCardBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: BusinessCard) {
             binding.tvNome.text = item.nome
             binding.tvTelefone.text = item.telefone

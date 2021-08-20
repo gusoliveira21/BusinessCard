@@ -17,4 +17,30 @@
     <color name="primaryLightColor">#67daff</color>
     <color name="primaryDarkColor">#007ac1</color>
     <color name="primaryTextColor">#000000</color>
+
+
+
+    <color name="Red400">#EF5350</color>
+    <color name="Pink400">#EC407A</color>
+    <color name="Purple400">#AB47BC</color>
+    <color name="DeepPurple400">#7E57C2</color>
+    <color name="Indigo400">#5C6BC0</color>
+    <color name="Blue400">#42A5F5</color>
+    <color name="LightBlue400">#29B6F6</color>
+    <color name="Cyan400">#26C6DA</color>
+    <color name="Teal400">#26A69A</color>
+    <color name="Green400">#66BB6A</color>
+    <color name="LightGreen400">#9CCC65</color>
+    <color name="Lime400">#D4E157</color>
+    <color name="Yellow400">#FFEE58</color>
+    <color name="Amber400">#FFCA28</color>
+    <color name="Orange400">#FFA726</color>
+    <color name="DeepOrange400">#FF7043</color>
+    <color name="Brown400">#8D6E63</color>
+    <color name="Gray400">#BDBDBD</color>
+    <color name="BlueGray400">#78909C</color>
+
+
+
+
 </resources>
