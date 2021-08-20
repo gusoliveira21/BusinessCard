@@ -67,16 +67,13 @@ class AdicionarCardActivity : AppCompatActivity() {
         return (binding.campoNome.text.toString().isEmpty() ||
                 binding.campoEmpresa.text.toString().isEmpty() ||
                 binding.campoEmail.text.toString().isEmpty() ||
-                binding.campoTelefone.text.toString().isEmpty()
-                //binding.campoCor.text.toString().isEmpty()
-                )
+                binding.campoTelefone.text.toString().isEmpty())
     }
     private fun colorFieldIsEmpty(): Boolean {
         return ((binding.radioGroupOne.checkedRadioButtonId == -1 &&
                 binding.radioGroupTwo.checkedRadioButtonId == -1 &&
                 binding.radioGroupThree.checkedRadioButtonId == -1))
     }
-
 
     fun radioGroupOne(view: View) {
         if (binding.radioGroupTwo.checkedRadioButtonId != -1)

@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
@@ -33,12 +34,16 @@ class CardAdapter() : RecyclerView.Adapter<CardViewHolder>(){
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         val (nome, empresa, telefone, email, cor, key) = movimentacoes[position]
-        holder.nome.text = nome
+        holder.nome.text = nome!!.uppercase()
         holder.empresa.text = empresa
         holder.telefone.text = telefone
         holder.email.text = email
         holder.cor.setCardBackgroundColor(Color.parseColor(cor))
+        holder.backgroungImagem.setBackgroundResource(R.drawable.backgroungcardmarcadagua)
+        holder.viewEmail.text = "Email:"
+        holder.viewTelefone.text = "Telefone:"
     }
+
 
 
 
@@ -54,4 +59,7 @@ class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val telefone: TextView = itemView.findViewById(R.id.tv_telefone)
     val email: TextView = itemView.findViewById(R.id.tv_email)
     val cor = itemView.findViewById<CardView>(R.id.mcv_content)
+    val backgroungImagem = itemView.findViewById<ImageView>(R.id.imageBackgroung)
+    val viewTelefone = itemView.findViewById<TextView>(R.id.tv_tel)
+    val viewEmail = itemView.findViewById<TextView>(R.id.tv_ema)
 }

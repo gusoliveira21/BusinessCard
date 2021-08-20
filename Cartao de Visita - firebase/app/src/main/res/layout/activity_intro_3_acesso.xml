@@ -130,6 +130,7 @@
                     android:foreground="?attr/selectableItemBackground"
                     android:onClick="signInWithGoogle"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:srcCompat="@drawable/icon_login_google" />
 
@@ -144,7 +145,8 @@
                     android:onClick="signInWithFacebook"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:srcCompat="@drawable/icon_login_facebook" />
+                    app:srcCompat="@drawable/icon_login_facebook"
+                    android:visibility="gone"/>
 
                 <ImageView
                     android:id="@+id/buttonLoginGithub"
@@ -158,7 +160,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/buttonLoginFacebook"
                     app:layout_constraintStart_toEndOf="@+id/buttonLoginGoogle"
-                    app:srcCompat="@drawable/icon_login_github" />
+                    app:srcCompat="@drawable/icon_login_github"
+                    android:visibility="gone"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

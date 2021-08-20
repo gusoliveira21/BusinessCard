@@ -23,11 +23,15 @@
         android:id="@+id/rv_cards"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintBottom_toTopOf="@+id/bt_addCard"
         app:layout_constraintTop_toBottomOf="@+id/businessCard"
+
         tools:itemCount="8"
+        tools:layout_editor_absoluteX="16dp"
         tools:listitem="@layout/item_business_card" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
