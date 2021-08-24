@@ -40,8 +40,6 @@ class BusinessCardAdapter :
             }
         }
     }
-
-
 }
 
 class DiffCallBack : DiffUtil.ItemCallback<BusinessCard>() {

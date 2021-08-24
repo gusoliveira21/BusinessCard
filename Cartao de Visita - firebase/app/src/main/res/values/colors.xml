@@ -18,6 +18,8 @@
     <color name="primaryDarkColor">#007ac1</color>
     <color name="primaryTextColor">#000000</color>
 
+    <color name="colorEdit">#388E3C</color>
+    <color name="colorDelet">#D32F2F</color>
 
 
     <color name="Red400">#EF5350</color>

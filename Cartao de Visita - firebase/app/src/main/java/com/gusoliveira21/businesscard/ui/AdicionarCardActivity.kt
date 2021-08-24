@@ -2,19 +2,20 @@ package com.gusoliveira21.businesscard.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.gusoliveira21.businesscard.databinding.ActivityAdicionarCardBinding
-import com.gusoliveira21.businesscard.model.Movimentacao
+import com.gusoliveira21.businesscard.model.MovimentacaoFirebase
 
-class AdicionarCardActivity : AppCompatActivity() {
+class AdicionarCardActivity() : AppCompatActivity() {
     private val binding by lazy { ActivityAdicionarCardBinding.inflate(layoutInflater) }
-    val movimentacoes = Movimentacao("", "", "", "", "")
+    var movimentacoes = MovimentacaoFirebase()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        if(intent.getStringExtra("nome") != null)
+            configCampos()
         listeners()
     }
 
@@ -22,23 +23,36 @@ class AdicionarCardActivity : AppCompatActivity() {
         binding.btCancel.setOnClickListener { finish() }
         binding.btConfirm.setOnClickListener { concluir() }
     }
-
+    fun configCampos() {
+        binding.campoNome.setText(intent.getStringExtra("nome").toString())
+        binding.campoEmpresa.setText(intent.getStringExtra("empresa").toString())
+        binding.campoTelefone.setText(intent.getStringExtra("telefone").toString())
+        binding.campoEmail.setText(intent.getStringExtra("email").toString())
+    }
     fun concluir() {
-        if ((hasFieldEmpty()== false) && (colorFieldIsEmpty() == false)) {
-            Toast.makeText(this, "Dentro", Toast.LENGTH_LONG).show()
-            movimentacoes.nome = binding.campoNome.text.toString()
-            movimentacoes.telefone = binding.campoTelefone.text.toString()
-            movimentacoes.email = binding.campoEmail.text.toString()
-            movimentacoes.empresa = binding.campoEmpresa.text.toString()
-            movimentacoes.cor = selectColorRadioButton()
-            movimentacoes.salvar()
+        if ((hasFieldEmpty() == false) && (colorFieldIsEmpty() == false)) {
+            if(intent.getStringExtra("nome") != null){
+                movimentacoes.nome = binding.campoNome.text.toString()
+                movimentacoes.telefone = binding.campoTelefone.text.toString()
+                movimentacoes.email = binding.campoEmail.text.toString()
+                movimentacoes.empresa = binding.campoEmpresa.text.toString()
+                movimentacoes.key = intent.getStringExtra("key")
+                movimentacoes.cor = selectColorRadioButton()
+                movimentacoes.editar()
+            }else {
+                movimentacoes.nome = binding.campoNome.text.toString()
+                movimentacoes.telefone = binding.campoTelefone.text.toString()
+                movimentacoes.email = binding.campoEmail.text.toString()
+                movimentacoes.empresa = binding.campoEmpresa.text.toString()
+                movimentacoes.cor = selectColorRadioButton()
+                movimentacoes.salvar()
+            }
             finish()
         } else Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_LONG).show()
     }
 
-
     fun selectColorRadioButton(): String {
-        when{
+        when {
             binding.radioButton2.isChecked -> return "#000000"
             binding.radioButton3.isChecked -> return "#EF5350"
             binding.radioButton4.isChecked -> return "#EC407A"
@@ -69,6 +83,7 @@ class AdicionarCardActivity : AppCompatActivity() {
                 binding.campoEmail.text.toString().isEmpty() ||
                 binding.campoTelefone.text.toString().isEmpty())
     }
+
     private fun colorFieldIsEmpty(): Boolean {
         return ((binding.radioGroupOne.checkedRadioButtonId == -1 &&
                 binding.radioGroupTwo.checkedRadioButtonId == -1 &&
@@ -95,3 +110,6 @@ class AdicionarCardActivity : AppCompatActivity() {
     }
 
 }
+
+
+
