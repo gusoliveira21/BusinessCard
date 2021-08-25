@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/drawable-v24/ic_background_slid_tree.xml" value="0.3828125" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/drawable-v24/ic_circle_slid_two.xml" value="0.3828125" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2947916666666667" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/drawable/ic_arrow_direita.xml" value="0.3828125" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/drawable/ic_arrow_esquerda.xml" value="0.3828125" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/drawable/ic_back.xml" value="0.30364583333333334" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/drawable/ic_compartilhar.xml" value="0.3828125" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2947916666666667" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/drawable/ic_olho_aberto.xml" value="0.3828125" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/drawable/ic_olho_fechado.xml" value="0.3828125" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_adicionar_card.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_auxiliar_metodos_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_cadastrar.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_color.xml" value="0.22" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_intro_1_hello.xml" value="0.22291666666666668" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_intro_2_description.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_intro_3_acesso.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_login_4.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_metodos_login.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_principal.xml" value="0.25" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_registrar.xml" value="0.2875" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/activity_registrar_5.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/intro_2_businesscard.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/intro_3_acesso.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/layout/item_business_card.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/mipmap-anydpi-v26/ic_iconlau.xml" value="0.23958333333333334" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/mipmap-anydpi-v26/ic_iconlau_round.xml" value="0.23958333333333334" />
+        <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita - firebase/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3828125" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
