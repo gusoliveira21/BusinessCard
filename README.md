@@ -75,6 +75,8 @@ Clique aqui e baixe na google play!
 - [ ] Adicionar login com facebook.
 - [ ] Adicionar login com github.
 - [ ] Refatorar.
+- [ ] Redefinição de senha.
+- [ ] Opção de excluir conta.
 
 
 
