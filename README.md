@@ -37,6 +37,12 @@ Clique aqui e baixe na google play!
  Este projeto teve como objetivo a construção de um app de cartão de visitas, onde é possível criar uma conta e deixar os dados armazenados, sendo possível realizar manipulações como editar e excluir, tudo isso para a construção de um conhecimento solido na linguagem kotlin e recursos como firebase.
 <p/>
 
+
+
+
+
+
+
 ## :green_book: Tarefas realizadas:
 
 - [x] Estudar a ferramenta lottie-android do airbnb para colocar animações no slide.
@@ -50,6 +56,7 @@ Clique aqui e baixe na google play!
 - [x] Adicionar funcionalidade de excluir cartão criado.
 - [x] Adicionar funcionalidade de editar cartão criado.
 - [x] Adicionar uma camada de figura no cartão.
+- [x] Adaptar a classe de compartilhamento para compartilhar o cartão.
 
 
 <br>
@@ -68,6 +75,17 @@ Clique aqui e baixe na google play!
 - [ ] Adicionar login com facebook.
 - [ ] Adicionar login com github.
 - [ ] Refatorar.
+
+
+
+
+
+
+## :bangbang: Dificuldades:
+Tive muita dificuldade em vários momentos, desde compreender como o AppIntro funcionava à o que era um file provider e como configura. Acredito que este foi um projeto incrível e muito importante para minha obtenção de uma compreenção mais madura e crítica em relação ao desenvolvimento mobile.
+
+
+
 
 <br><br><br><br>
 
