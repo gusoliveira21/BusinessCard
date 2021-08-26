@@ -18,8 +18,16 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        configurationHideactionbarAndSystemInformation()
         auth = FirebaseAuth.getInstance()
         listeners()
+
+    }
+
+    private fun configurationHideactionbarAndSystemInformation() {
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        supportActionBar!!.hide()
     }
 
     private fun listeners() {

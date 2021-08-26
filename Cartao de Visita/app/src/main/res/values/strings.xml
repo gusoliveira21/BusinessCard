@@ -48,6 +48,7 @@
     <string name="github_app_secret">90349522cf4105f697bb81f0e7f6b71c3a982582</string>
     <string name="github_app_url">https://business-card-b9614.firebaseapp.com/__/auth/handler</string>
     <string name="confirm">confirmar</string>
+    <string name="menu_logout">logout</string>
 
 
 </resources>

@@ -44,6 +44,20 @@ class MainActivity() : AppIntro() {
         val currentUser = auth.currentUser
         updateUI(currentUser)
     }
+    private fun updateUI(user: FirebaseUser?) {
+        if (user != null) {
+            startActivity(Intent(this, PrincipalActivity::class.java))
+            finish()
+        }
+    }
+
+    override fun onResume() {
+        configuracoesSlide()
+        slideIntroducao()
+
+        super.onResume()
+    }
+
 
     //Todo: Preciso colocar a verificação de internet no código
     //-------------------------------- Configurações do Slide --------------------------------
@@ -53,7 +67,6 @@ class MainActivity() : AppIntro() {
         isButtonsEnabled = false
         setTransformer(AppIntroPageTransformerType.Fade)
     }
-
     fun slideIntroducao() {
         addSlide(AppIntroCustomLayoutFragment.newInstance(R.layout.activity_intro_1_hello))
         addSlide(AppIntroCustomLayoutFragment.newInstance(R.layout.activity_intro_2_description))
@@ -71,12 +84,7 @@ class MainActivity() : AppIntro() {
     }
 
 
-    private fun updateUI(user: FirebaseUser?) {
-        if (user != null) {
-            startActivity(Intent(this, PrincipalActivity::class.java))
-            finish()
-        }
-    }
+
 
 
     // -------------------------------- login com o google --------------------------------
@@ -93,10 +101,11 @@ class MainActivity() : AppIntro() {
 
     //TODO: Acessar
     fun signInWithGoogle(view: View) {
-        Log.e(ContentValues.TAG, "-> Acessar google!")
-        Toast.makeText(this, "-> Acessar google!", Toast.LENGTH_LONG).show()
+        if (util.statusInternet(this)) {
+        Toast.makeText(this, "Acessando login com o google!", Toast.LENGTH_LONG).show()
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, 555)
+        } else Toast.makeText(this, "Sem conexão com a internet!", Toast.LENGTH_LONG).show()
     }
 
     //TODO: Recebe o resultado da operação
@@ -137,14 +146,11 @@ class MainActivity() : AppIntro() {
     fun btLogin(view: View) {
         if (util.statusInternet(this)) {
             startActivity(Intent(this, LoginActivity::class.java))
-            Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show()
         } else Toast.makeText(this, "Sem conexão com a internet!", Toast.LENGTH_LONG).show()
     }
-
     fun btCadastrar(view: View) {
         if (util.statusInternet(this)) {
             startActivity(Intent(this, CadastroActivity::class.java))
-            Toast.makeText(this, "Cadastrar", Toast.LENGTH_SHORT).show()
         } else
             Toast.makeText(this, "Sem conexão com a internet!", Toast.LENGTH_LONG).show()
 
@@ -157,15 +163,16 @@ class MainActivity() : AppIntro() {
             Log.e("TAG", "currentUser antes -> ${auth.currentUser}")
             auth.signInAnonymously().addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        Log.e("TAG", "currentUser depois-> ${auth.currentUser}")
+                        Toast.makeText(baseContext, "Acessando anonimamente...!", Toast.LENGTH_SHORT)
+                            .show()
                         Log.w("TAG", "signInAnonymously:Sucess", task.exception)
 
                         val user = auth.currentUser
                         updateUI(user)
 
                     } else {
-                        Log.w("TAG", "signInAnonymously:failure", task.exception)
-                        Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT)
+                        Log.w("TAG", "Houve uma falha na autenticação -> ", task.exception)
+                        Toast.makeText(baseContext, "Houve uma falha na autenticação!", Toast.LENGTH_SHORT)
                             .show()
                     }
                 }

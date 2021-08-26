@@ -2,12 +2,17 @@ package com.gusoliveira21.businesscard
 
 
 import android.Manifest
+import android.annotation.SuppressLint
+import android.app.ActionBar
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,12 +31,14 @@ import java.util.*
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
+import com.gusoliveira21.businesscard.databinding.ActivityPrincipalBinding
 import com.gusoliveira21.businesscard.util.util
 
 
 class PrincipalActivity : AppIntro() {
     //Bind do layout
-    private val binding by lazy { com.gusoliveira21.businesscard.databinding.ActivityPrincipalBinding.inflate(layoutInflater) }
+    private val binding by lazy {
+        ActivityPrincipalBinding.inflate(layoutInflater)}
 
     //private lateinit var binding: ActivityPrincipalBinding
     //Variável de autenticação e obtenção de credenciais
@@ -53,39 +60,65 @@ class PrincipalActivity : AppIntro() {
         auth = Firebase.auth
 
         setUpPermissions()
+        setConfiguracoesToolBar()
         listener()
         adicionaCardDoFirebaseNalistaDeCartoes()
         swipe()
+
+
+    }
+    @SuppressLint("WrongConstant")
+    private fun setConfiguracoesToolBar() {
+        supportActionBar!!.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
+        supportActionBar!!.setCustomView(R.layout.toolbar)
     }
 
     private fun listener() {
         binding.btAddCard.setOnClickListener {
             startActivity(Intent(this, AdicionarCardActivity::class.java))
         }
-        binding.btDeslogar.setOnClickListener {
+
+         CardAdapter(ListaDeCartoes, this).listnerShare = { card ->
+            Image.share(this, card)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.menu_logout){
             Firebase.auth.signOut()
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
-        binding.swiperefresh.setOnRefreshListener {
-            //TODO: Colocar animação durante carregamento de alse
-        }
 
-        CardAdapter(ListaDeCartoes, this).listnerShare = { card ->
-            Image.share(this, card)
-        }
 
+        return super.onOptionsItemSelected(item)
     }
 
-    fun setupRecyclertView(context: Context) {
+
+
+
+
+
+
+
+
+
+
+
+
+    private fun setupRecyclertView(context: Context) {
         binding.rvCards.layoutManager = LinearLayoutManager(context)
         binding.rvCards.adapter = adapter
     }
 
     private fun setUpPermissions() {
-        ActivityCompat.requestPermissions(
-            this,
-            arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
             1
         )
         ActivityCompat.requestPermissions(
@@ -181,7 +214,7 @@ class PrincipalActivity : AppIntro() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 ListaDeCartoes.clear()
                 dataSnapshot.children.forEach { inDataSnapshot ->
-                    Log.e("TAG","-> ${inDataSnapshot}")
+                    Log.e("TAG", "-> ${inDataSnapshot}")
 
                     var movimentacao = inDataSnapshot.getValue(MovimentacaoFirebase::class.java)
                     movimentacao!!.key = inDataSnapshot.key

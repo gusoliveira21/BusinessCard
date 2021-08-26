@@ -26,6 +26,7 @@ class CadastroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        configurationHideactionbarAndSystemInformation()
         auth = Firebase.auth
         listeners()
 
@@ -42,6 +43,7 @@ class CadastroActivity : AppCompatActivity() {
             finish()
         }
     }
+
 
     private fun listeners() {
         binding.apply {
@@ -66,7 +68,10 @@ class CadastroActivity : AppCompatActivity() {
         }
     }
 
-
+    private fun configurationHideactionbarAndSystemInformation() {
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        supportActionBar!!.hide()
+    }
     // -------------------------------- login com email e senha --------------------------------
     private fun signInWithEmailAndPassword() {
         if (verificaSenhas() && verificaSeEmailEEmpty()) {

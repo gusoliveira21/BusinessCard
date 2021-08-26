@@ -6,20 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.AdicionarCardActivity">
 
-    <!--Titulo-->
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_new_card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:gravity="center"
-        android:text="@string/label_description_business_cards"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <!--Campo nome-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_nome"
@@ -30,7 +16,7 @@
         android:hint="@string/layer_nome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_new_card">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/campoNome"

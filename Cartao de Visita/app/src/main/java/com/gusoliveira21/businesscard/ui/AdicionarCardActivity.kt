@@ -14,9 +14,24 @@ class AdicionarCardActivity() : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        if(intent.getStringExtra("nome") != null)
+        configurationHidSystemInformation()
+        if(intent.getStringExtra("nome") != null) {
             configCampos()
+            configurarToolbar(true)
+        } else configurarToolbar(false)
+
         listeners()
+    }
+
+    private fun configurationHidSystemInformation() {
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+    }
+
+    private fun configurarToolbar(editar:Boolean) {
+    if(editar)
+        supportActionBar!!.title="Editar Cartão"
+    else
+        supportActionBar!!.title="Novo Cartão"
     }
 
     fun listeners() {
