@@ -1,4 +1,4 @@
-package com.gusoliveira21.businesscard.ui
+package com.gusoliveira21.businesscard.ui.acesso.cadastrarUser
 
 import android.content.ContentValues
 import android.content.Intent

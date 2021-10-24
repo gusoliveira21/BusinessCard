@@ -1,4 +1,4 @@
-package com.gusoliveira21.businesscard.ui
+package com.gusoliveira21.businesscard.ui.addCard
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +14,7 @@ class AdicionarCardActivity() : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
         configurationHidSystemInformation()
         if(intent.getStringExtra("nome") != null) {
             configCampos()
