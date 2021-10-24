@@ -1,4 +1,4 @@
-package com.gusoliveira21.businesscard.ui.acesso
+package com.gusoliveira21.businesscard.ui
 
 import android.content.ContentValues
 import android.content.Intent
@@ -18,8 +18,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.gusoliveira21.businesscard.PrincipalActivity
 import com.gusoliveira21.businesscard.R
-import com.gusoliveira21.businesscard.ui.acesso.cadastrarUser.CadastroActivity
-import com.gusoliveira21.businesscard.ui.acesso.loginUser.LoginActivity
 import com.gusoliveira21.businesscard.util.util
 
 class MainActivity() : AppIntro() {
@@ -61,9 +59,6 @@ class MainActivity() : AppIntro() {
     }
 
 
-
-    
-
     //Todo: Preciso colocar a verificação de internet no código
     //-------------------------------- Configurações do Slide --------------------------------
     fun configuracoesSlide() {
@@ -77,19 +72,16 @@ class MainActivity() : AppIntro() {
         addSlide(AppIntroCustomLayoutFragment.newInstance(R.layout.activity_intro_2_description))
         addSlide(AppIntroCustomLayoutFragment.newInstance(R.layout.activity_intro_3_acesso))
     }
+
     // -------------------------------- login com facebook --------------------------------
     fun signInWithFacebook(view: View) {
         Toast.makeText(this, "Ainda não implementado", Toast.LENGTH_SHORT).show()
     }
+
     // -------------------------------- login com github --------------------------------
     fun signInWithGithub(view: View) {
         Toast.makeText(this, "Ainda não implementado", Toast.LENGTH_SHORT).show()
     }
-
-
-
-
-
 
 
 
@@ -150,15 +142,6 @@ class MainActivity() : AppIntro() {
     }
 
 
-
-
-
-
-
-
-
-
-
     //-------------------------------- Botões login ou registro --------------------------------
     fun btLogin(view: View) {
         if (util.statusInternet(this)) {
@@ -170,20 +153,23 @@ class MainActivity() : AppIntro() {
             startActivity(Intent(this, CadastroActivity::class.java))
         } else
             Toast.makeText(this, "Sem conexão com a internet!", Toast.LENGTH_LONG).show()
+
     }
 
     //-------------------------------- Login anônimo --------------------------------
     fun btUseAnonimamente(view: View) {
+
         if (util.statusInternet(this)) {
             Log.e("TAG", "currentUser antes -> ${auth.currentUser}")
             auth.signInAnonymously().addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        Toast.makeText(baseContext, "Acessando anonimamente!", Toast.LENGTH_SHORT)
+                        Toast.makeText(baseContext, "Acessando anonimamente...!", Toast.LENGTH_SHORT)
                             .show()
                         Log.w("TAG", "signInAnonymously:Sucess", task.exception)
 
                         val user = auth.currentUser
                         updateUI(user)
+
                     } else {
                         Log.w("TAG", "Houve uma falha na autenticação -> ", task.exception)
                         Toast.makeText(baseContext, "Houve uma falha na autenticação!", Toast.LENGTH_SHORT)

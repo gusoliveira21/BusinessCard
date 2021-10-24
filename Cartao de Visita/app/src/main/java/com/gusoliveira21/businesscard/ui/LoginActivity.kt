@@ -1,4 +1,4 @@
-package com.gusoliveira21.businesscard.ui.acesso.loginUser
+package com.gusoliveira21.businesscard.ui
 
 import android.content.ContentValues
 import android.content.Intent

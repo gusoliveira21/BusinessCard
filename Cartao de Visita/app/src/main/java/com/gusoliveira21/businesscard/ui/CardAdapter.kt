@@ -19,7 +19,8 @@ import java.util.*
 
 
 
-class CardAdapter(): RecyclerView.Adapter<CardViewHolder>() {
+class CardAdapter():
+    RecyclerView.Adapter<CardViewHolder>() {
     var movimentacoes = ArrayList<MovimentacaoFirebase>()
     var listnerShare: (View) -> Unit = {}
 
@@ -29,8 +30,9 @@ class CardAdapter(): RecyclerView.Adapter<CardViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
-        val binding = ItemBusinessCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CardViewHolder(binding)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ItemBusinessCardBinding.inflate(inflater, parent, false)
+        return CardViewHolder(binding.root)
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
@@ -55,13 +57,13 @@ class CardAdapter(): RecyclerView.Adapter<CardViewHolder>() {
     }
 }
 
-class CardViewHolder(private val binding: ItemBusinessCardBinding): RecyclerView.ViewHolder(binding.root) {
-    val card = binding.cardview
-    val nome = binding.tvNome
-    val email = binding.tvEmail
-    val empresa = binding.tvEmpresa
-    val telefone = binding.tvTelefone
-    val viewEmail = binding.tvEma
-    val viewTelefone = binding.tvTel
-    val backgroungImagem = binding.imageBackgroung
+class CardViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    val card: CardView = itemView.findViewById(R.id.cardview)
+    val nome: TextView = itemView.findViewById(R.id.tv_nome)
+    val email: TextView = itemView.findViewById(R.id.tv_email)
+    val empresa: TextView = itemView.findViewById(R.id.tv_empresa)
+    val telefone: TextView = itemView.findViewById(R.id.tv_telefone)
+    val viewEmail: TextView = itemView.findViewById(R.id.tv_ema)
+    val viewTelefone: TextView = itemView.findViewById(R.id.tv_tel)
+    val backgroungImagem: ImageView = itemView.findViewById(R.id.imageBackgroung)
 }

@@ -11,21 +11,19 @@
         android:id="@+id/cardview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-
-        app:layout_constraintDimensionRatio="16:9"
-        android:layout_margin="8dp"
-
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:checkable="true"
         android:elevation="18dp"
         android:focusable="true"
-
         app:cardBackgroundColor="@color/primaryColor"
-
         app:cardCornerRadius="16dp"
-
         app:layout_constraintBottom_toBottomOf="parent"
-
-
+        app:layout_constraintDimensionRatio="16:9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
