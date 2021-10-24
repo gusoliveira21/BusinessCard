@@ -43,10 +43,12 @@
         <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita/app/src/main/res/menu/menu.xml" value="0.25" />
         <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita/app/src/main/res/mipmap-anydpi-v26/ic_iconlau.xml" value="0.3828125" />
         <entry key="..\:/Users/gustavo/Documents/GitHub/BusinessCard/Cartao de Visita/app/src/main/res/mipmap-anydpi-v26/ic_iconlau_round.xml" value="0.3828125" />
+        <entry key="..\:/Users/gustavo/Documents/Studio/GitHub/BusinessCard/Cartao de Visita/app/src/main/res/layout/activity_principal.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/gustavo/Documents/Studio/GitHub/BusinessCard/Cartao de Visita/app/src/main/res/layout/item_business_card.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

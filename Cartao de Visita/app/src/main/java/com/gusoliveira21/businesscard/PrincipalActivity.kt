@@ -12,7 +12,6 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,9 +23,9 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
 import com.gusoliveira21.businesscard.model.MovimentacaoFirebase
-import com.gusoliveira21.businesscard.ui.AdicionarCardActivity
+import com.gusoliveira21.businesscard.ui.addCard.AdicionarCardActivity
 import com.gusoliveira21.businesscard.ui.CardAdapter
-import com.gusoliveira21.businesscard.ui.MainActivity
+import com.gusoliveira21.businesscard.ui.acesso.MainActivity
 import java.util.*
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
@@ -99,14 +98,6 @@ class PrincipalActivity : AppIntro() {
 
         return super.onOptionsItemSelected(item)
     }
-
-
-
-
-
-
-
-
 
 
 
