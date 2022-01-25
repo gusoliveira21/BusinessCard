@@ -31,8 +31,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
 import com.gusoliveira21.businesscard.databinding.ActivityPrincipalBinding
-import com.gusoliveira21.businesscard.util.util
-
+import com.gusoliveira21.businesscard.util.Util
 
 class PrincipalActivity : AppIntro() {
     //Bind do layout
@@ -44,7 +43,7 @@ class PrincipalActivity : AppIntro() {
     private lateinit var auth: FirebaseAuth
 
     //variável de armazenamento/Banco de dados
-    private val firebaseRef: DatabaseReference = FirebaseDatabase.getInstance().getReference()
+    private val firebaseRef: DatabaseReference = FirebaseDatabase.getInstance().reference
     private var movimentacaoRef: DatabaseReference? = null
 
     //Lista de objetos de cada card
@@ -68,7 +67,7 @@ class PrincipalActivity : AppIntro() {
     }
     @SuppressLint("WrongConstant")
     private fun setConfiguracoesToolBar() {
-        supportActionBar!!.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
+        supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setCustomView(R.layout.toolbar)
     }
 
@@ -200,16 +199,16 @@ class PrincipalActivity : AppIntro() {
     }
 
     private fun adicionaCardDoFirebaseNalistaDeCartoes() {
-        movimentacaoRef = firebaseRef.child("movimentacao").child(util.idUsuario())
+        movimentacaoRef = firebaseRef.child("movimentacao").child(Util.idUsuario())
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 ListaDeCartoes.clear()
-                dataSnapshot.children.forEach { inDataSnapshot ->
-                    Log.e("TAG", "-> ${inDataSnapshot}")
+                dataSnapshot.children.forEach { it
+                    Log.e("TAG", it.toString())
 
-                    var movimentacao = inDataSnapshot.getValue(MovimentacaoFirebase::class.java)
-                    movimentacao!!.key = inDataSnapshot.key
-                    ListaDeCartoes.add(movimentacao!!)
+                    var movimentacao = it.getValue(MovimentacaoFirebase::class.java)
+                    movimentacao!!.key = it.key
+                    ListaDeCartoes.add(movimentacao)
                 }
                 setupRecyclertView(this@PrincipalActivity)
 

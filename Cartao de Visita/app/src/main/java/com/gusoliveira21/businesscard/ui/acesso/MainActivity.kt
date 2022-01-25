@@ -1,9 +1,7 @@
 package com.gusoliveira21.businesscard.ui.acesso
 
 import android.content.ContentValues
-import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -22,9 +20,9 @@ import com.gusoliveira21.businesscard.PrincipalActivity
 import com.gusoliveira21.businesscard.R
 import com.gusoliveira21.businesscard.ui.acesso.cadastrarUser.CadastroActivity
 import com.gusoliveira21.businesscard.ui.acesso.loginUser.LoginActivity
-import com.gusoliveira21.businesscard.util.util
+import com.gusoliveira21.businesscard.util.Util
 
-class MainActivity() : AppIntro() {
+class MainActivity: AppIntro() {
     //private  val binding by lazy { ActivityIntro3AcessoBinding.inflate(layoutInflater) }
     private lateinit var auth: FirebaseAuth
 
@@ -64,8 +62,8 @@ class MainActivity() : AppIntro() {
     }
 
 
-    //Todo: Preciso colocar a verificação de internet no código
-    fun isOnline(context: Context): Boolean {
+    //Todo: Preciso colocar a verificação de internet no código -> Feito
+    /*fun isOnline(context: Context): Boolean {
         val connectivity_manager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val active_network = connectivity_manager.activeNetworkInfo
@@ -79,16 +77,16 @@ class MainActivity() : AppIntro() {
         } else {
             return false// not connected to the internet
         }
-    }
+    }*/
     //-------------------------------- Configurações do Slide --------------------------------
-    fun configuracoesSlide() {
+    private fun configuracoesSlide() {
         setImmersiveMode()
         isSkipButtonEnabled = false
         isButtonsEnabled = false
         setTransformer(AppIntroPageTransformerType.Fade)
     }
 
-    fun slideIntroducao() {
+    private fun slideIntroducao() {
         addSlide(AppIntroCustomLayoutFragment.newInstance(R.layout.activity_intro_1_hello))
         addSlide(AppIntroCustomLayoutFragment.newInstance(R.layout.activity_intro_2_description))
         addSlide(AppIntroCustomLayoutFragment.newInstance(R.layout.activity_intro_3_acesso))
@@ -118,15 +116,11 @@ class MainActivity() : AppIntro() {
 
     //TODO: Acessar
     fun signInWithGoogle(view: View) {
-        if (isOnline(this)) {
-            if (util.statusInternet(this)) {
+            if (Util.statusInternet(this)) {
                 Toast.makeText(this, "Acessando login com o google!", Toast.LENGTH_LONG).show()
                 val signInIntent = googleSignInClient.signInIntent
                 startActivityForResult(signInIntent, 555)
             } else Toast.makeText(this, "Sem conexão com a internet!", Toast.LENGTH_LONG).show()
-        }else{
-            Toast.makeText(this, "Sem conexão com a internet!", Toast.LENGTH_LONG).show()
-        }
     }
 
     //TODO: Recebe o resultado da operação
@@ -165,13 +159,13 @@ class MainActivity() : AppIntro() {
 
     //-------------------------------- Botões login ou registro --------------------------------
     fun btLogin(view: View) {
-        if (util.statusInternet(this)) {
+        if (Util.statusInternet(this)) {
             startActivity(Intent(this, LoginActivity::class.java))
         } else Toast.makeText(this, "Sem conexão com a internet!", Toast.LENGTH_LONG).show()
     }
 
     fun btCadastrar(view: View) {
-        if (util.statusInternet(this)) {
+        if (Util.statusInternet(this)) {
             startActivity(Intent(this, CadastroActivity::class.java))
         } else
             Toast.makeText(this, "Sem conexão com a internet!", Toast.LENGTH_LONG).show()
@@ -179,7 +173,7 @@ class MainActivity() : AppIntro() {
 
     //-------------------------------- Login anônimo --------------------------------
     fun btUseAnonimamente(view: View) {
-        if (util.statusInternet(this)) {
+        if (Util.statusInternet(this)) {
             Log.e("TAG", "currentUser antes -> ${auth.currentUser}")
             auth.signInAnonymously().addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {

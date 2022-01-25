@@ -4,7 +4,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.IgnoreExtraProperties
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.gusoliveira21.businesscard.util.util
+import com.gusoliveira21.businesscard.util.Util
 
 @IgnoreExtraProperties
 data class MovimentacaoFirebase(
@@ -18,7 +18,7 @@ data class MovimentacaoFirebase(
 
         private var database: DatabaseReference = Firebase.database.reference
 
-        fun toMap(): Map<String?, Any?> {
+        private fun toMap(): Map<String?, Any?> {
             return mapOf(
                 "nome" to nome,
                 "empresa" to empresa,
@@ -30,21 +30,21 @@ data class MovimentacaoFirebase(
 
         fun salvar() {
             database.child("movimentacao")
-                .child(util.idUsuario())
+                .child(Util.idUsuario())
                 .push()
                 .setValue(this)
         }
 
         fun editar() {
             database.child("movimentacao")
-                .child(util.idUsuario())
+                .child(Util.idUsuario())
                 .child(key.toString())
                 .updateChildren(toMap())
         }
 
         fun excluir() {
             database.child("movimentacao")
-                .child(util.idUsuario())
+                .child(Util.idUsuario())
                 .child(key!!)
                 .removeValue()
         }
