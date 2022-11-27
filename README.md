@@ -7,24 +7,9 @@
 
 # Cartão de Visitas 
 
-<p align='Center'>
-Clique aqui e baixe na google play!
-<p/>
 
 <p align='Center'>
- :point_down:
-<p/>
- 
-<p align='Center'>
-<a href="https://play.google.com/store/apps/details?id=com.gusoliveira21.businesscard&hl=pt_BR&gl=US">
-<img src='https://user-images.githubusercontent.com/42920754/125994119-9b6389fc-ba26-49d7-bd53-69bcd02b2045.jpg' width='15%'>
-</a>
-<p/>
 
-
-<p align='Center'>
-:point_up:
-<p/>
 <br>
 
 
